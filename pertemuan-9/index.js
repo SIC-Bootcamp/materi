@@ -30,34 +30,36 @@
 // //     .catch((error) => console.log(error, "hubungi admin"));
 // // };
 
-// // menggunakan async await
-// const getDataAsync = async () => {
-//   try {
-//     let response = await fetch("https://api.github.com/users/thoriqnf");
-//     response = await response.json();
-//     console.log(response);
-//     // response.push({ name: "Thoriq" });
-//     // console.log(response);
-//   } catch (error) {
-//     console.log(error, "hubungi admin");
-//   }
-// };
-
 // // getData();
-// getDataAsync();
 
-let fruits = ["Jambu", "Apel", "Mangga", "Jambu", "Jeruk", "Apel"];
+// let fruits = ["Jambu", "Apel", "Mangga", "Jambu", "Jeruk", "Apel"];
 
-let fruitList = fruits.reduce((list, fruit) => {
-  console.log("luar", list[fruit]);
-  if (list[fruit]) {
-    // memeriksa apakah buah tersebut sudah ada dalam objek atau belum
-    console.log("dalam if", list[fruit]);
-    list[fruit] = list[fruit] + 1; // jika ada, nilainya + 1
-  } else {
-    list[fruit] = 1; // jika belum ada, beri nilai 1
+// let fruitList = fruits.reduce((list, fruit) => {
+//   console.log("luar", list[fruit]);
+//   if (list[fruit]) {
+//     // memeriksa apakah buah tersebut sudah ada dalam objek atau belum
+//     console.log("dalam if", list[fruit]);
+//     list[fruit] = list[fruit] + 1; // jika ada, nilainya + 1
+//   } else {
+//     list[fruit] = 1; // jika belum ada, beri nilai 1
+//   }
+//   return list; // mengembalikan objek
+// }, {}); // initial valuenya adalah objek
+
+// console.log(fruitList);
+
+// menggunakan async await
+const getDataAsync = async () => {
+  try {
+    let response = await fetch("https://api.github.com/users/thoriqnf");
+    let dataUser = await response.json();
+
+    document.querySelector("#github-name").innerHTML = dataUser.name;
+
+    // response.push({ name: "Thoriq" });
+    // console.log(response);
+  } catch (error) {
+    console.log(error, "hubungi admin");
   }
-  return list; // mengembalikan objek
-}, {}); // initial valuenya adalah objek
-
-console.log(fruitList);
+};
+getDataAsync();
